@@ -1,0 +1,91 @@
+@baseUrl = http://localhost:5000/
+
+###
+
+# USERS
+
+###
+
+# создание пользователя
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+  "email": "vERy_l00@mail.ru",
+  "password": "vERy_l00ngPassword"
+}
+
+###
+
+# получение информации о пользователе
+GET {{baseUrl}}user/2
+Content-Type: application/json
+
+###
+
+# обновление пользователя
+PATCH {{baseUrl}}/user/2
+Content-Type: application/json
+
+{
+  "email": "Alexandr@xd.ru",
+  "password": "simple_Password0"
+}
+
+###
+
+# удаление пользователя
+DELETE {{baseUrl}}/user/11
+Content-Type: application/json
+
+###
+
+# создание пользователя
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+  "email": "isStr0ng_2@ya.ru",
+  "password": "Password_isStr0ng"
+}
+
+
+###
+
+# ADVERTISEMENTS
+
+###
+
+# создание объявления
+POST {{baseUrl}}/advert
+Content-Type: application/json
+
+{
+  "title": "Selling phone",
+  "description": "iPhone X, brand-new",
+  "owner_id": 1
+}
+
+###
+
+# получение информации по объявлению
+GET {{baseUrl}}advert/1
+Content-Type: application/json
+
+###
+
+# обновление объявления
+PATCH {{baseUrl}}/advert/1
+Content-Type: application/json
+
+{
+  "description": "iPhone X, brand-new, some scratches"
+}
+
+###
+
+# удаление объявления
+DELETE {{baseUrl}}/advert/1
+Content-Type: application/json
+
+###
