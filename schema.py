@@ -3,7 +3,24 @@ import re
 
 
 class BaseUser(BaseModel):
+    email: str
     password: str
+
+    @field_validator("email")
+    @classmethod
+    def check_email(cls, value: str):
+        if "@" not in value:
+            raise ValueError("Email must contain '@' symbol.")        
+        
+        domain = value.split('@')[1] if '@' in value else ''
+        if '.' not in domain:
+            raise ValueError("Email must contain a domain after '@' with a '.' in it.")
+
+        email_regex = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+        if not re.match(email_regex, value):
+            raise ValueError("Invalid email format.")
+        
+        return value
 
     @field_validator("password")
     @classmethod
@@ -53,10 +70,11 @@ class UpdateUser(BaseUser):
 class CreateAdvert(BaseAdvert):
     title: str
     description: str
-    owner_id: int
+    owner_id: int = None
 
 
 class UpdateAdvert(BaseAdvert):
     title: str = None
     description: str = None
     owner_id: int = None
+

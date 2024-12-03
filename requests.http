@@ -1,24 +1,18 @@
 @baseUrl = http://localhost:5000/
 
-###
-
-# USERS
-
-###
-
 # создание пользователя
 POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "email": "vERy_l00@mail.ru",
+  "email": "user_1@mail.ru",
   "password": "vERy_l00ngPassword"
 }
 
 ###
 
 # получение информации о пользователе
-GET {{baseUrl}}user/2
+GET {{baseUrl}}user/1
 Content-Type: application/json
 
 ###
@@ -26,44 +20,30 @@ Content-Type: application/json
 # обновление пользователя
 PATCH {{baseUrl}}/user/2
 Content-Type: application/json
+Authorization: Basic user_1@mail.ru:vERy_l00ngPassword
 
 {
-  "email": "Alexandr@xd.ru",
-  "password": "simple_Password0"
+  "email": "user_2@mail.ru",
+  "password": "vERy_l00ngPassword"
 }
 
 ###
 
 # удаление пользователя
-DELETE {{baseUrl}}/user/11
+DELETE {{baseUrl}}/user/2
+Authorization: Basic user_1@mail.ru:vERy_l00ngPassword
 Content-Type: application/json
-
-###
-
-# создание пользователя
-POST {{baseUrl}}/user
-Content-Type: application/json
-
-{
-  "email": "isStr0ng_2@ya.ru",
-  "password": "Password_isStr0ng"
-}
-
-
-###
-
-# ADVERTISEMENTS
 
 ###
 
 # создание объявления
 POST {{baseUrl}}/advert
 Content-Type: application/json
+Authorization: Basic user_1@mail.ru:vERy_l00ngPassword
 
 {
   "title": "Selling phone",
-  "description": "iPhone X, brand-new",
-  "owner_id": 1
+  "description": "iPhone X, brand-new"
 }
 
 ###
@@ -77,6 +57,7 @@ Content-Type: application/json
 # обновление объявления
 PATCH {{baseUrl}}/advert/1
 Content-Type: application/json
+Authorization: Basic user_1@mail.ru:vERy_l00ngPassword
 
 {
   "description": "iPhone X, brand-new, some scratches"
@@ -87,5 +68,6 @@ Content-Type: application/json
 # удаление объявления
 DELETE {{baseUrl}}/advert/1
 Content-Type: application/json
+Authorization: Basic user_1@mail.ru:vERy_l00ngPassword
 
 ###
